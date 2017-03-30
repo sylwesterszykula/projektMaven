@@ -3,6 +3,7 @@ package com.main;
 import com.databaseOperations.Implementations.OperationsUsers;
 import com.databaseOperations.Interfaces.Operations;
 import com.dateConverting.DataConverting;
+import com.domain.Adress;
 import com.domain.Users;
 
 import javax.persistence.EntityManager;
@@ -17,14 +18,19 @@ public class Main {
         Operations operations = new OperationsUsers();
 
         Users users = new Users();
+        Adress adress = new Adress();
         DataConverting dataConverting = new DataConverting();
         users.setFirstName("Sylwester");
         users.setLastName("Szykula");
         users.setAge(22);
         users.setPassword("sylwek");
-        users.setTimeStampOfRegister(dataConverting.convertingFromLocalLocalDate());
+        users.setDateOfRegister(dataConverting.convertingFromLocalLocalDate());
         users.setDateOfBirth(dataConverting.convertingFromBrithLocalDate(1994,12,9));
-
+        adress.setLocality("Krasnobrod");
+        adress.setStreet("Tomaszowska");
+        adress.setStreetNumber("120");
+        adress.setZipCode("22-440");
+        users.setAdress(adress);
         operations.addToDatabase(users, entityManager);
 
         entityManager.close();
