@@ -1,0 +1,34 @@
+package com.main;
+
+import com.databaseOperations.Implementations.OperationsUsers;
+import com.databaseOperations.Interfaces.Operations;
+import com.dateConverting.DataConverting;
+import com.domain.Users;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class Main {
+    public static void main(String[] args) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Operations operations = new OperationsUsers();
+
+        Users users = new Users();
+        DataConverting dataConverting = new DataConverting();
+        users.setFirstName("Sylwester");
+        users.setLastName("Szykula");
+        users.setAge(22);
+        users.setPassword("sylwek");
+        users.setTimeStampOfRegister(dataConverting.convertingFromLocalLocalDate());
+        users.setDateOfBirth(dataConverting.convertingFromBrithLocalDate(1994,12,9));
+
+        operations.addToDatabase(users, entityManager);
+
+        entityManager.close();
+        entityManagerFactory.close();
+    }
+
+}
