@@ -20,9 +20,12 @@ public class Users {
     @Column(name = "DateOfBirth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    @Column(name = "TimeStampOfRegister")
+    @Column(name = "DateOfRegister")
     @Temporal(TemporalType.DATE)
-    private Date timeStampOfRegister;
+    private Date dateOfRegister;
+    @OneToOne
+    @JoinColumn(name = "AdressId")
+    private Adress adress;
 
     public long getId() {
         return id;
@@ -72,11 +75,19 @@ public class Users {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Date getTimeStampOfRegister() {
-        return timeStampOfRegister;
+    public Date getDateOfRegister() {
+        return dateOfRegister;
     }
 
-    public void setTimeStampOfRegister(Date timeStampOfRegister) {
-        this.timeStampOfRegister = timeStampOfRegister;
+    public void setDateOfRegister(Date dateOfRegister) {
+        this.dateOfRegister = dateOfRegister;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
     }
 }

@@ -7,49 +7,82 @@
       <Visible>1</Visible>
     </schema>
     <schema id="3" parent="1" name="information_schema"/>
-    <table id="4" parent="2" name="users"/>
-    <column id="5" parent="4" name="id">
+    <table id="4" parent="2" name="adress"/>
+    <table id="5" parent="2" name="users"/>
+    <column id="6" parent="4" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="6" parent="4" name="FirstName">
+    <column id="7" parent="4" name="Locality">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="8" parent="4" name="Street">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="9" parent="4" name="StreetNumber">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="7" parent="4" name="LastName">
+    <column id="10" parent="4" name="ZipCode">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="8" parent="4" name="Age">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <column id="9" parent="4" name="Password">
-      <Position>6</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="10" parent="4" name="DateOfBirth">
-      <Position>3</Position>
-      <DataType>date|0</DataType>
-    </column>
-    <column id="11" parent="4" name="TimeStampOfRegister">
-      <Position>7</Position>
-      <DataType>datetime|0</DataType>
-    </column>
-    <index id="12" parent="4" name="id_UNIQUE">
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="13" parent="4" name="PRIMARY">
+    <key id="11" parent="4" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="14" parent="4" name="id_UNIQUE">
+    <column id="12" parent="5" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="13" parent="5" name="Age">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="14" parent="5" name="DateOfBirth">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="15" parent="5" name="DateOfRegister">
+      <Position>4</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="16" parent="5" name="FirstName">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="17" parent="5" name="LastName">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="18" parent="5" name="Password">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="19" parent="5" name="AdressId">
+      <Position>8</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <index id="20" parent="5" name="FK58hymi21432x1bcx4u7dhsgsu">
+      <ColNames>AdressId</ColNames>
+    </index>
+    <key id="21" parent="5" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>id_UNIQUE</UnderlyingIndexName>
+      <Primary>1</Primary>
     </key>
+    <foreign-key id="22" parent="5" name="FK58hymi21432x1bcx4u7dhsgsu">
+      <ColNames>AdressId</ColNames>
+      <RefSchemaName>bazadanych</RefSchemaName>
+      <RefTableName>adress</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>
