@@ -33,6 +33,8 @@ public class Main {
         users.setAdress(adress);
         operations.addToDatabase(users, entityManager);
 
+        /*TEST*/
+
         entityManager.close();
         entityManagerFactory.close();
     }
