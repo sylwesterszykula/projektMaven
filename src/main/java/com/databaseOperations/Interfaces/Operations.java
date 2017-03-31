@@ -8,7 +8,7 @@ public interface Operations {
 
     void updateOnIdDatabase (Object object, EntityManager entityManager);
 
-    void deleteFromDatabase (Object object, EntityManager entityManager);
+    void deleteOnIdFromDatabase (Object object, EntityManager entityManager);
 
     Object selectOnIdFromDatabase (Object object, EntityManager entityManager);
 }

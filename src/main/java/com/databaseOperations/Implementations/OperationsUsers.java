@@ -3,6 +3,7 @@ package com.databaseOperations.Implementations;
 import com.databaseOperations.Interfaces.Operations;
 import com.domain.Adress;
 import com.domain.Users;
+import sun.nio.cs.US_ASCII;
 
 import javax.persistence.EntityManager;
 
@@ -20,15 +21,19 @@ public class OperationsUsers implements Operations {
     public void updateOnIdDatabase(Object object, EntityManager entityManager) {
         Users users = (Users)object;
         entityManager.getTransaction().begin();
-        Users temp = selectOnIdFromDatabase(object,entityManager);
+        Users temp = selectOnIdFromDatabase(object, entityManager);
         //reczne ustawianie ktore pola maja byc aktualizowane (do zrobienia uniwersalna metoda)
         temp.setAge(users.getAge());
         temp.getAdress().setStreet(users.getAdress().getStreet());
         entityManager.getTransaction().commit();
     }
 
-    public void deleteFromDatabase(Object object, EntityManager entityManager) {
-
+    public void deleteOnIdFromDatabase(Object object, EntityManager entityManager) {
+        entityManager.getTransaction().begin();
+        Users users = selectOnIdFromDatabase(object, entityManager);
+        entityManager.remove(users.getAdress());
+        entityManager.remove(users);
+        entityManager.getTransaction().commit();
     }
 
     public Users selectOnIdFromDatabase(Object object, EntityManager entityManager) {

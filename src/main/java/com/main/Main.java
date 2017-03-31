@@ -41,14 +41,18 @@ public class Main {
         System.out.println(users.toString());*/
 
 
-        Users users = new Users();
+        /*Users users = new Users();
         Adress adress = new Adress();
         users.setAdress(adress);
         users.setId(1);
         users.setAge(23);
         users.getAdress().setStreet("TomaszowskaLublin");
         operations.updateOnIdDatabase(users, entityManager);
-        System.out.println(operations.selectOnIdFromDatabase(users, entityManager).toString());
+        System.out.println(operations.selectOnIdFromDatabase(users, entityManager).toString());*/
+
+        Users users = new Users();
+        users.setId(3);
+        operations.deleteOnIdFromDatabase(users, entityManager);
 
         entityManager.close();
         entityManagerFactory.close();
