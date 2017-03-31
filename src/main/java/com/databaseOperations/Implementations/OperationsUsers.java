@@ -25,10 +25,11 @@ public class OperationsUsers implements Operations {
 
     }
 
-    public Users selectFromDatabase(long id, EntityManager entityManager) {
-        Users users = new Users();
-        users.setId(id);
-        users.setPassword("LOL");
+    public Users selectOnIdFromDatabase(Object object, EntityManager entityManager) {
+        Users users = (Users)object;
+        entityManager.getTransaction().begin();
+        users = entityManager.find(Users.class, users.getId());
+        entityManager.getTransaction().commit();
         return users;
     }
 }

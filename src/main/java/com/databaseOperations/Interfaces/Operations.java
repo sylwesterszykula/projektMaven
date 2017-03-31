@@ -10,5 +10,5 @@ public interface Operations {
 
     void deleteFromDatabase (Object object, EntityManager entityManager);
 
-    Object selectFromDatabase (long id, EntityManager entityManager);
+    Object selectOnIdFromDatabase (Object object, EntityManager entityManager);
 }

@@ -17,7 +17,7 @@ public class Main {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         Operations operations = new OperationsUsers();
 
-        Users users = new Users();
+        /*Users users = new Users();
         Adress adress = new Adress();
         DataConverting dataConverting = new DataConverting();
         users.setFirstName("Sylwester");
@@ -31,10 +31,13 @@ public class Main {
         adress.setStreetNumber("120");
         adress.setZipCode("22-440");
         users.setAdress(adress);
-        operations.addToDatabase(users, entityManager);
+        operations.addToDatabase(users, entityManager);*/
 
-        /*TEST*/
-
+        Users users = new Users();
+        users.setId(1);
+        users.setFirstName("Jan");
+        users = (Users) operations.selectOnIdFromDatabase(users, entityManager);
+        System.out.println(users.toString());
         entityManager.close();
         entityManagerFactory.close();
     }
