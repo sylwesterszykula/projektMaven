@@ -6,7 +6,7 @@ public interface Operations {
 
     void addToDatabase (Object object, EntityManager entityManager);
 
-    void updateDatabase (Object object, EntityManager entityManager);
+    void updateOnIdDatabase (Object object, EntityManager entityManager);
 
     void deleteFromDatabase (Object object, EntityManager entityManager);
 

@@ -34,11 +34,22 @@ public class Main {
         operations.addToDatabase(users, entityManager);*/
 
 
-        Users users = new Users();
+        /*Users users = new Users();
         users.setId(1);
         users.setFirstName("Jan");
-        users = (Users) operations.selectOnIdFromDatabase(users, entityManager);
-        System.out.println(users.toString());
+        users = (Users)operations.selectOnIdFromDatabase(users, entityManager);
+        System.out.println(users.toString());*/
+
+
+        Users users = new Users();
+        Adress adress = new Adress();
+        users.setAdress(adress);
+        users.setId(1);
+        users.setAge(23);
+        users.getAdress().setStreet("TomaszowskaLublin");
+        operations.updateOnIdDatabase(users, entityManager);
+        System.out.println(operations.selectOnIdFromDatabase(users, entityManager).toString());
+
         entityManager.close();
         entityManagerFactory.close();
     }
