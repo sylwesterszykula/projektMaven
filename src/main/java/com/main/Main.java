@@ -33,6 +33,7 @@ public class Main {
         users.setAdress(adress);
         operations.addToDatabase(users, entityManager);*/
 
+
         Users users = new Users();
         users.setId(1);
         users.setFirstName("Jan");
