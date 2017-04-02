@@ -17,6 +17,8 @@ public class Users {
     private Integer age;
     @Column(name = "Password")
     private String password;
+    @Column(name = "AdresEmail")
+    private String adresEmail;
     @Column(name = "DateOfBirth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
@@ -91,6 +93,14 @@ public class Users {
         this.adress = adress;
     }
 
+    public String getAdresEmail() {
+        return adresEmail;
+    }
+
+    public void setAdresEmail(String adresEmail) {
+        this.adresEmail = adresEmail;
+    }
+
     @Override
     public String toString() {
         return "Users{" +
@@ -99,6 +109,7 @@ public class Users {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 ", password='" + password + '\'' +
+                ", adresEmail='" + adresEmail + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", dateOfRegister=" + dateOfRegister +
                 ", adress=" + adress +
