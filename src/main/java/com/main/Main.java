@@ -17,8 +17,6 @@ public class Main {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("myDatabase");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-
-
         /*Operations operations = new OperationsOnUsers();
         Users users = new Users();
         Adress adress = new Adress();
@@ -84,6 +82,15 @@ public class Main {
         Users users = new Users();
         users.setAdresEmail("sylwesterszykula@gmail.com");
         operations.deleteFromDatabase(users, entityManager);*/
+
+        Operations operations = new OperationsOnUsers();
+        Users users = new Users();
+        users.setAdress(new Adress());
+        users.setAdresEmail("sylwesterszykula@gmail.com");
+        users.setFirstName("Sylwester");
+        users.getAdress().setStreetNumber("Juranda");
+        users.getAdress().setStreetNumber("400");
+        operations.updateDatabase(users, entityManager);
 
         entityManager.close();
         entityManagerFactory.close();

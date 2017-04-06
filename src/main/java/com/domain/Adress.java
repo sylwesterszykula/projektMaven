@@ -1,8 +1,8 @@
 package com.domain;
 
 import javax.persistence.*;
-
 @Entity
+@Table(name = "Adress")
 public class Adress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,6 @@ public class Adress {
     private String street;
     @Column(name = "StreetNumber")
     private String streetNumber;
-
-    public long getId() {
-        return id;
-    }
 
     public void setId(long id) {
         this.id = id;

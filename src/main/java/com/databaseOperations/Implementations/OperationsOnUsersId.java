@@ -7,44 +7,42 @@ import com.domain.Users;
 import javax.persistence.EntityManager;
 
 public class OperationsOnUsersId implements Operations{
-    private Users users;
-    private Adress adress;
 
     public void addToDatabase(Object object, EntityManager entityManager) {
-        users = (Users) object;
-        adress = users.getAdress();
+        Users user = (Users) object;
+        Adress adres = user.getAdress();
         entityManager.getTransaction().begin();
-        entityManager.persist(users);
-        entityManager.persist(adress);
+        entityManager.persist(user);
+        entityManager.persist(adres);
         entityManager.getTransaction().commit();
     }
 
     public void updateDatabase(Object object, EntityManager entityManager) {
-        users = (Users)object;
+        Users user = (Users)object;
         entityManager.getTransaction().begin();
         Users temp = (Users) selectFromDatabase(object, entityManager);
         //reczne ustawianie ktore pola maja byc aktualizowane (do zrobienia uniwersalna metoda)
-        temp.setAdresEmail(users.getAdresEmail());
+        temp.setAdresEmail(user.getAdresEmail());
         entityManager.getTransaction().commit();
     }
 
     public void deleteFromDatabase(Object object, EntityManager entityManager) {
         entityManager.getTransaction().begin();
-        users = (Users) selectFromDatabase(object, entityManager);
-        entityManager.remove(users.getAdress());
-        entityManager.remove(users);
+        Users user = (Users) selectFromDatabase(object, entityManager);
+        entityManager.remove(user.getAdress());
+        entityManager.remove(user);
         entityManager.getTransaction().commit();
     }
 
     public Object selectFromDatabase(Object object, EntityManager entityManager) {
-        users = (Users)object;
+        Users user = (Users)object;
         if (!entityManager.isOpen()) {
             entityManager.getTransaction().begin();
         }
-        users = entityManager.find(Users.class, users.getId());
+        user = entityManager.find(Users.class, user.getId());
         if(!entityManager.isOpen()) {
             entityManager.getTransaction().commit();
         }
-        return users;
+        return user;
     }
 }
